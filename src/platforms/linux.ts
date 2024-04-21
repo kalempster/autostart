@@ -21,7 +21,7 @@ Terminal=false
         await Bun.write(this.autoStartFilePath, content);
     }
 
-    override async disable() {
+    override async disable(): Promise<void> {
         if (!(await this.isEnabled())) {
             return;
         }
@@ -29,7 +29,7 @@ Terminal=false
         await unlink(this.autoStartFilePath);
     }
 
-    override async isEnabled() {
+    override async isEnabled(): Promise<boolean> {
         return await Bun.file(this.autoStartFilePath).exists();
     }
 }
