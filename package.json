@@ -1,0 +1,14 @@
+{
+    "name": "@kalempster/autostart",
+    "module": "index.ts",
+    "dependencies": {
+        "command-join": "^3.0.0",
+        "winreg": "^1.2.5"
+    },
+    "devDependencies": {
+        "@types/bun": "latest",
+        "@types/winreg": "^1.2.36",
+        "typescript": "^5.4.5"
+    },
+    "type": "module"
+}
