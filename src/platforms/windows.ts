@@ -1,6 +1,5 @@
 import { promisify } from "util";
 
-import { commandJoin } from "command-join";
 import WinReg from "winreg";
 
 import { AutoStart } from "../autostart";
@@ -14,9 +13,7 @@ export class WindowsAutoStart extends AutoStart {
     override async enable(): Promise<void> {
         const { name, reg } = this;
 
-        const line = commandJoin(["start /B", this.command]);
-
-        await promisify(reg.set.bind(reg))(name, WinReg.REG_SZ, line);
+        await promisify(reg.set.bind(reg))(name, WinReg.REG_SZ, `"start /B \"${this.command}\""`);
     }
 
     override async disable(): Promise<void> {
